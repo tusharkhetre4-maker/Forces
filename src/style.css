@@ -1,0 +1,167 @@
+/* ==========================================================================
+   P.E.S. COLLEGE OF ENGINEERING - FORCES COMMITTEE PORTAL
+   Official Institutional Styling (pescoe.ac.in aesthetic)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Cinzel:wght@700&display=swap');
+
+:root {
+  --pes-navy: #0b2866;
+  --pes-navy-dark: #071a44;
+  --pes-navy-light: #163e91;
+  --pes-blue-banner: #1e5cd8;
+  --pes-gold: #f59e0b;
+  --pes-gold-dark: #d97706;
+  --pes-bg-soft: #f4f6fa;
+  --pes-text-dark: #111827;
+  --pes-text-muted: #4b5563;
+  --card-shadow: 0 4px 16px -2px rgba(11, 40, 102, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8fafc;
+  color: var(--pes-text-dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Institutional Headings */
+.pes-title {
+  color: var(--pes-navy);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Navigation bar styling */
+.pes-nav-bg {
+  background-color: var(--pes-navy);
+  background: linear-gradient(90deg, #071a44 0%, #0b2866 50%, #071a44 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid #f59e0b;
+}
+
+.pes-nav-item {
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pes-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fbbf24;
+}
+
+.pes-nav-item.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: #fbbf24;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* Marquee / Notification Banner */
+.pes-ticker {
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Slider Bezel Frame matching screenshot */
+.pes-slider-frame {
+  background: #c2cad6;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Notification Box (Left Column in screenshot) */
+.pes-notice-box {
+  background: #f0f7ff;
+  border: 1px solid #cce3ff;
+  border-radius: 1.25rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* Vision & Mission Cards (Right Column in screenshot) */
+.pes-vision-card {
+  background: #e6f9ed;
+  border: 1px solid #b7ebd0;
+  border-radius: 1.25rem;
+}
+
+.pes-mission-card {
+  background: #fef8db;
+  border: 1px solid #fae69e;
+  border-radius: 1.25rem;
+}
+
+/* Department Card matching screenshot */
+.pes-dept-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pes-dept-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -4px rgba(11, 40, 102, 0.12);
+  border-color: #cbd5e1;
+}
+
+.pes-icon-badge {
+  width: 3.25rem;
+  height: 3.25rem;
+  background-color: #f59e0b;
+  border-radius: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin: 0 auto 1rem auto;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+}
+
+/* Smooth tab animation */
+.tab-content {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

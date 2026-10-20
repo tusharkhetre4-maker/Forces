@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "Event": {
+      "title": "Event",
+      "description": "A college event or hackathon organized by Forces committee",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "venue": { "type": "string" },
+        "seats": { "type": "number" },
+        "image": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "category", "date", "venue"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "Student registration for a committee event",
+      "type": "object",
+      "properties": {
+        "eventId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userName": { "type": "string" },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["eventId", "userEmail"]
+    },
+    "Complaint": {
+      "title": "Complaint",
+      "description": "Confidential anonymous feedback or complaint",
+      "type": "object",
+      "properties": {
+        "targetType": { "type": "string" },
+        "targetMemberId": { "type": "string" },
+        "category": { "type": "string" },
+        "urgency": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["title", "description", "category"]
+    },
+    "Rating": {
+      "title": "Rating",
+      "description": "Anonymous star rating and review for a committee member",
+      "type": "object",
+      "properties": {
+        "memberId": { "type": "string" },
+        "stars": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["memberId", "stars"]
+    }
+  },
+  "firestore": {
+    "/events/{eventId}": {
+      "schema": "Event",
+      "description": "Collection of events published by the committee"
+    },
+    "/registrations/{registrationId}": {
+      "schema": "Registration",
+      "description": "Collection of event RSVPs and admissions"
+    },
+    "/complaints/{complaintId}": {
+      "schema": "Complaint",
+      "description": "Anonymous feedback & complaint submissions"
+    },
+    "/ratings/{ratingId}": {
+      "schema": "Rating",
+      "description": "Member ratings submitted by students"
+    }
+  }
+}

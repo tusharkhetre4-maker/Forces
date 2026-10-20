@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORCES - Student Tech & Leadership Committee</title>
+  <meta name="description" content="Official college committee portal for FORCES featuring event registration, interactive quizzes, leadership showcase, anonymous member grievance box, and administrative management.">
+  <meta property="og:title" content="FORCES - Student Tech & Leadership Committee">
+  <meta property="og:description" content="Official college committee portal for FORCES featuring event registration, interactive quizzes, leadership showcase, anonymous member grievance box, and administrative management.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Institutional CSS (PESCOE Style) -->
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="bg-[#f8fafc] text-slate-800 antialiased font-sans selection:bg-[#0b2866] selection:text-white min-h-screen flex flex-col">
+
+  <!-- ========================================================================= -->
+  <!-- 1. INSTITUTIONAL MAIN HEADER (Original FORCES Name & Data in New Style)    -->
+  <!-- ========================================================================= -->
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- LEFT: Official College Crest Logo -->
+        <div onclick="switchTab('home')" class="flex items-center cursor-pointer select-none group shrink-0" title="P.E.S. College of Engineering">
+          <!-- College Crest Logo -->
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-2 border-slate-200/90 p-1 shadow-md bg-white overflow-hidden shrink-0 group-hover:scale-105 transition-transform flex items-center justify-center">
+            <img 
+              src="public/images/forceslogo.jpeg" 
+              alt="P.E.S. College of Engineering " 
+              class="w-full h-full object-contain"
+            >
+          </div>
+        </div>
+
+        <!-- CENTER: Name 'FORCES' & Tagline -->
+        <div onclick="switchTab('home')" class="text-center flex-1 max-w-2xl px-2 cursor-pointer select-none">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0b2866] tracking-tight leading-none">
+            FORCES
+          </h1>
+          <p class="text-xs sm:text-sm font-bold text-blue-700 uppercase tracking-widest mt-1.5">
+            Forum Of Computer Science & Engineering Students
+          </p>
+        </div>
+
+        <!-- RIGHT: FORCES Council 2026 Logo -->
+        <div class="flex items-center gap-3 shrink-0">
+          <!-- FORCES Council 2026 Emblem -->
+          <div onclick="switchTab('home')" class="flex items-center cursor-pointer select-none group" title="FORCES Council 2026">
+            <!-- Official FORCES Committee Logo on Right Side -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-amber-400 p-1 shadow-md shadow-blue-900/20 bg-white overflow-hidden shrink-0 group-hover:scale-105 transition-transform" title="FORCES Council 2026 Official Logo">
+              <img 
+                src="public/images/collegelogo.png" 
+                alt="FORCES Council 2026 Official Logo" 
+                class="w-full h-full object-contain rounded-full"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 2. NAVIGATION BAR (Official PES Deep Navy Navigation Bar)               -->
+    <!-- ======================================================================= -->
+    <div class="pes-nav-bg w-full shadow-md bg-[#0b2866]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between overflow-x-auto no-scrollbar py-0.5">
+          <nav class="flex items-center">
+            <button onclick="switchTab('home')" id="nav-home" class="pes-nav-item active">
+              <i class="fa-solid fa-house mr-1.5 text-amber-400"></i>Home
+            </button>
+            <button onclick="switchTab('team')" id="nav-team" class="pes-nav-item">
+              Committee Team
+            </button>
+            <button onclick="switchTab('events')" id="nav-events" class="pes-nav-item">
+              Events & Hackathons
+            </button>
+            <button onclick="switchTab('quizzes')" id="nav-quizzes" class="pes-nav-item">
+              Quizzes & Tests
+            </button>
+            <button onclick="switchTab('feedback')" id="nav-feedback" class="pes-nav-item text-rose-300 hover:text-white">
+              <i class="fa-solid fa-shield-halved mr-1 text-rose-400"></i>Feedback & Complain
+            </button>
+            <button onclick="switchTab('admin')" id="nav-admin" class="pes-nav-item">
+              Admin Cell
+            </button>
+            <button onclick="scrollToPhotos()" class="pes-nav-item">
+              Photo Gallery
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 3. MARQUEE / TICKER STRIP (Clean White Notification Strip)              -->
+    <!-- ======================================================================= -->
+    <div class="pes-ticker py-2 px-4 bg-white shadow-xs">
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-4 text-center">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+          <span class="text-xs font-bold text-blue-800">📢 LATEST UPDATE:</span>
+          <span class="text-xs text-slate-700 font-medium">
+            HackForces 2026 Flagship Hackathon Registrations are now LIVE! Free RSVP for all college students.
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 4. MAIN PAGE CONTENT CONTAINER                                            -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14">
+    
+    <!-- TAB 1: HOME VIEW -->
+    <div id="tab-home" class="tab-content space-y-14">
+      
+      <!-- HERO CAROUSEL: Framed in Matte Grey Bezel (Exact Style from Screenshot) -->
+      <div class="max-w-5xl mx-auto">
+        <div class="pes-slider-frame relative">
+          <!-- Previous Button -->
+          <button onclick="prevSlide()" class="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95" aria-label="Previous slide">
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+          </button>
+          
+          <!-- Next Button -->
+          <button onclick="nextSlide()" class="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center shadow-lg transition hover:scale-105 active:scale-95" aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </button>
+
+          <!-- Inner Photo Frame -->
+          <div class="w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-2xl overflow-hidden bg-slate-900 relative shadow-inner">
+            <img 
+              id="heroSliderImg" 
+              src="public/images/cov1 (2).png" 
+              alt="P.E.S. College of Engineering FORCES Committee & Faculty Leadership Council" 
+              class="w-full h-full object-cover object-center transition-all duration-700"
+              onerror="this.src='/assets/aistudio/allgroup_26b6306b.JPG'"
+            >
+
+            <!-- Bottom Transparent Overlay Caption (Exact Style from Screenshot) -->
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 text-white text-center space-y-2">
+              <p id="heroSliderCaption" class="text-sm sm:text-base md:text-lg font-bold text-white max-w-3xl mx-auto">
+                P.E.S. College of Engineering FORCES Committee & Faculty Leadership Council
+              </p>
+              <p id="heroSliderSub" class="text-[11px] sm:text-xs text-amber-300 font-semibold">
+                Official Student Committee Council Inauguration & Executive Assembly
+              </p>
+              
+              <!-- Action Buttons -->
+              <div class="flex items-center justify-center gap-2.5 pt-1">
+                <button onclick="switchTab('team')" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md transition">
+                  <i class="fa-solid fa-users mr-1.5"></i>Meet President & Team
+                </button>
+                <button onclick="scrollToPhotos()" class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded-xl text-xs border border-white/30 transition">
+                  <i class="fa-solid fa-images mr-1.5"></i>Scroll to Event Photos
+                </button>
+                <button onclick="switchTab('feedback')" class="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs transition">
+                  <i class="fa-solid fa-shield-halved mr-1.5"></i>Grievance Shield
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dot Pagination Indicators -->
+          <div id="heroSliderDots" class="flex items-center justify-center gap-2 mt-3.5">
+            <button onclick="setSlide(0)" class="slider-dot w-3 h-3 rounded-full bg-white transition-all shadow-md" aria-label="Slide 1"></button>
+            <button onclick="setSlide(1)" class="slider-dot w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80" aria-label="Slide 2"></button>
+            <button onclick="setSlide(2)" class="slider-dot w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80" aria-label="Slide 3"></button>
+            <button onclick="setSlide(3)" class="slider-dot w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80" aria-label="Slide 4"></button>
+            <button onclick="setSlide(4)" class="slider-dot w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80" aria-label="Slide 5"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY METRICS ROW (Original FORCES Data) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft text-center hover:-translate-y-0.5 transition duration-200">
+          <div class="text-3xl font-black text-[#0b2866] mb-1">45</div>
+          <p class="text-xs sm:text-sm text-slate-500 font-semibold">Council Leads</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft text-center hover:-translate-y-0.5 transition duration-200">
+          <div class="text-3xl font-black text-[#0b2866] mb-1">24+</div>
+          <p class="text-xs sm:text-sm text-slate-500 font-semibold">Annual Summits</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft text-center hover:-translate-y-0.5 transition duration-200">
+          <div class="text-3xl font-black text-[#0b2866] mb-1">100%</div>
+          <p class="text-xs sm:text-sm text-slate-500 font-semibold">Whistleblower Shield</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft text-center hover:-translate-y-0.5 transition duration-200">
+          <div class="text-3xl font-black text-[#0b2866] mb-1">1,200+</div>
+          <p class="text-xs sm:text-sm text-slate-500 font-semibold">Active Students</p>
+        </div>
+      </div>
+
+      <!-- SECTION: ABOUT FORCES & NOTIFICATIONS (Two-Column Layout from Screenshot) -->
+      <div class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0b2866] text-center tracking-tight">
+          About FORCES Committee
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- LEFT COLUMN: Notifications Card (Exact Style from Screenshot) -->
+          <div class="lg:col-span-5 pes-notice-box p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-blue-200">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center text-sm shadow-xs">
+                    <i class="fa-solid fa-bell"></i>
+                  </div>
+                  <h3 class="text-base font-bold text-[#0b2866]">Notifications</h3>
+                </div>
+                <span class="text-[11px] font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-md">
+                  5 Updates
+                </span>
+              </div>
+
+              <!-- List of Notices with PDF badges -->
+              <div class="divide-y divide-blue-100 mt-3 text-xs space-y-2">
+                <div class="pt-2">
+                  <p class="font-medium text-slate-800 leading-snug flex items-start gap-2">
+                    <i class="fa-solid fa-file-pdf text-rose-500 mt-0.5"></i>
+                    <span>Result of Re-Examination & Tech Assessment Winter 2026 has been declared.</span>
+                  </p>
+                </div>
+
+                <div class="pt-2">
+                  <p class="font-medium text-slate-800 leading-snug flex items-start gap-2">
+                    <i class="fa-solid fa-file-pdf text-rose-500 mt-0.5"></i>
+                    <span>HackForces 2026 Flagship Hackathon Notification & Problem Statements. <span class="text-[10px] text-blue-700 font-bold">[Upload Date: 18 Oct 2026]</span> <span class="bg-rose-100 text-rose-700 text-[9px] font-bold px-1 rounded">PDF</span></span>
+                  </p>
+                </div>
+
+                <div class="pt-2">
+                  <p class="font-medium text-slate-800 leading-snug flex items-start gap-2">
+                    <i class="fa-solid fa-file-pdf text-rose-500 mt-0.5"></i>
+                    <span>Notice for Quiz Series & Algorithmic Time table Winter 2026 are now available.</span>
+                  </p>
+                </div>
+
+                <div class="pt-2">
+                  <p class="font-medium text-slate-800 leading-snug flex items-start gap-2">
+                    <i class="fa-solid fa-file-pdf text-rose-500 mt-0.5"></i>
+                    <span>Open House Student Grievance Redressal Meeting with President Samantha Vance on 24th Oct. <span class="bg-rose-100 text-rose-700 text-[9px] font-bold px-1 rounded">PDF</span></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-blue-200 mt-4 flex items-center justify-between text-xs">
+              <span class="text-slate-500 font-medium">Council Updates</span>
+              <button onclick="switchTab('feedback')" class="text-blue-700 hover:text-blue-900 font-bold flex items-center gap-1">
+                <span>Submit Grievance</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Stacked Vision & Mission (Exact Style from Screenshot) -->
+          <div class="lg:col-span-7 flex flex-col gap-5 justify-between">
+            
+            <!-- Our Vision (Mint Green Box from Screenshot) -->
+            <div class="pes-vision-card p-6 flex-1 flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-md bg-emerald-600 text-white flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-eye"></i>
+                </span>
+                <h3 class="text-base font-extrabold text-emerald-950">Our Vision</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-emerald-900 font-medium leading-relaxed pl-8">
+                To create sound technical manpower with global competitiveness, morality and social sense.
+              </p>
+            </div>
+
+            <!-- Our Mission (Warm Cream/Amber Box from Screenshot) -->
+            <div class="pes-mission-card p-6 flex-1 flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-md bg-amber-600 text-white flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-compass"></i>
+                </span>
+                <h3 class="text-base font-extrabold text-amber-950">Our Mission</h3>
+              </div>
+              <ul class="text-xs sm:text-sm text-amber-950 space-y-2 leading-relaxed pl-8 list-disc">
+                <li>To provide the state-of-the-art technical infrastructure and motivate student developers to build modern engineering systems.</li>
+                <li>To provide an embellished academic and congenial environment for complete peer-to-peer technical learning.</li>
+                <li>To promote intellectual, moral and social democracy to ensure all round development of the students.</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION: OUR DOMAINS (Original FORCES Tracks in 4-Card Grid Style from Screenshot) -->
+      <div class="space-y-6">
+        <div class="text-center space-y-1.5">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0b2866] tracking-tight">
+            Our Domain Tracks
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+            Explore our specialized technical departments executing innovation, hardware labs, and student leadership.
+          </p>
+        </div>
+
+        <!-- 4 Domain Cards with Amber Icon Badges (Matching Screenshot) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <!-- Track 1: Technical & Hackathons -->
+          <div class="pes-dept-card">
+            <div>
+              <div class="pes-icon-badge">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 leading-snug">Technical & Hackathons</h3>
+              <p class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider mt-1">FORCES CORE TRACK</p>
+              <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
+                Autonomous AI agents, cloud architectures, competitive coding leagues, and open-source systems.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 mt-4">
+              <span onclick="switchTab('events')" class="text-xs text-slate-500 font-semibold hover:text-[#0b2866] flex items-center justify-center gap-1 cursor-pointer">
+                <span>View track events</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Track 2: Robotics & Hardware Labs -->
+          <div class="pes-dept-card">
+            <div>
+              <div class="pes-icon-badge">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 leading-snug">Robotics & Hardware Labs</h3>
+              <p class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider mt-1">ENGINEERING SPRINT</p>
+              <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
+                Microcontroller sensor nodes, autonomous obstacle-avoiding rovers, and real-time telemetry pipelines.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 mt-4">
+              <span onclick="switchTab('events')" class="text-xs text-slate-500 font-semibold hover:text-[#0b2866] flex items-center justify-center gap-1 cursor-pointer">
+                <span>View track events</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Track 3: Event Logistics & Operations -->
+          <div class="pes-dept-card">
+            <div>
+              <div class="pes-icon-badge">
+                <i class="fa-solid fa-bullhorn"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 leading-snug">Operations & Logistics</h3>
+              <p class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider mt-1">COUNCIL MANAGEMENT</p>
+              <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
+                Campus venue management, participant accreditation, stage logistics, and safety protocols.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 mt-4">
+              <span onclick="switchTab('team')" class="text-xs text-slate-500 font-semibold hover:text-[#0b2866] flex items-center justify-center gap-1 cursor-pointer">
+                <span>Meet council team</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Track 4: Design Systems & Media -->
+          <div class="pes-dept-card">
+            <div>
+              <div class="pes-icon-badge">
+                <i class="fa-solid fa-pen-nib"></i>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 leading-snug">Design & Media Outreach</h3>
+              <p class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider mt-1">CREATIVE WING</p>
+              <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
+                Figma design tokens, responsive web interfaces, branding assets, and digital broadcast streams.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 mt-4">
+              <span onclick="switchTab('team')" class="text-xs text-slate-500 font-semibold hover:text-[#0b2866] flex items-center justify-center gap-1 cursor-pointer">
+                <span>Meet creative leads</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION: SCROLLABLE EVENT PHOTOGRAPHS -->
+      <div id="scrollable-event-photos" class="scroll-mt-28 space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-soft">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-3 border-b border-slate-200">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-black text-[#0b2866] tracking-tight">
+              Captured Moments & Event Chronicles
+            </h3>
+            <p class="text-xs text-slate-600 max-w-xl">
+              High-definition photographs from our campus hackathons, symposiums, and engineering labs.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="scrollPhotos(-400)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#0b2866] flex items-center justify-center shadow-xs transition" title="Scroll left">
+              <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <button onclick="scrollPhotos(400)" class="w-10 h-10 rounded-xl bg-[#0b2866] hover:bg-[#163e91] text-white flex items-center justify-center shadow-sm transition" title="Scroll right">
+              <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+          <button onclick="filterPhotos('all')" class="photo-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-[#0b2866] text-white">All Photos</button>
+          <button onclick="filterPhotos('summit')" class="photo-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">Council & Ceremony</button>
+          <button onclick="filterPhotos('hackathon')" class="photo-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">Flagship Hackathons</button>
+          <button onclick="filterPhotos('talk')" class="photo-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">Tech Talks</button>
+          <button onclick="filterPhotos('workshop')" class="photo-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">Robotics & Labs</button>
+        </div>
+
+        <!-- Scrollable Photo Reel Container -->
+        <div id="photoCarousel" class="flex gap-6 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scroll-smooth no-scrollbar">
+          <!-- Card 1: Official FORCES Committee & Faculty Assembly -->
+          <div class="photo-card w-[300px] sm:w-[380px] shrink-0 snap-start bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col group" data-category="summit">
+            <div class="h-52 w-full relative overflow-hidden bg-slate-950 cursor-pointer" onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132404_bb376019.png', 'P.E.S. FORCES Committee & Faculty Leadership Council', 'Official Student Council Inauguration & Executive Assembly')">
+              <img src="public/images/cov1 (3).png" alt="FORCES Committee Assembly" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='/assets/aistudio/allgroup_26b6306b.JPG'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-[#0b2866] text-white text-[10px] font-bold px-2 py-0.5 rounded">Council Inauguration</span>
+              <div class="absolute bottom-3 left-3 right-3 text-white"><p class="text-xs sm:text-sm font-bold truncate">FORCES Committee Council 2026</p></div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+              <p class="text-xs text-slate-600 line-clamp-2">Official assembly of student office-bearers, coordinators, and faculty mentors at P.E.S. College of Engineering.</p>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132404_bb376019.png', 'P.E.S. FORCES Committee & Faculty Council', 'Official Student Council Inauguration')" class="text-xs font-bold text-[#0b2866] hover:underline">View Photo</button>
+                <button onclick="switchTab('team')" class="text-xs font-bold text-amber-600 hover:underline">Meet Team →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: FORCES Discipline Committee -->
+          <div class="photo-card w-[300px] sm:w-[380px] shrink-0 snap-start bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col group" data-category="summit">
+            <div class="h-52 w-full relative overflow-hidden bg-slate-950 cursor-pointer" onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132351_90093611.png', 'FORCES Discipline Committee Council', 'Student Committee Governance & Leadership Leads')">
+              <img src="public/images/cov1 (4).png" alt="Discipline Committee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='/images/forces_students_hero_1790867007572.jpg'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-[#0b2866] text-white text-[10px] font-bold px-2 py-0.5 rounded">Discipline Committee</span>
+              <div class="absolute bottom-3 left-3 right-3 text-white"><p class="text-xs sm:text-sm font-bold truncate">Discipline Committee Council</p></div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+              <p class="text-xs text-slate-600 line-clamp-2">Student governance team leads ensuring campus coordination, integrity, and event management.</p>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132351_90093611.png', 'FORCES Discipline Committee', 'Student Committee Governance')" class="text-xs font-bold text-[#0b2866] hover:underline">View Photo</button>
+                <button onclick="switchTab('team')" class="text-xs font-bold text-amber-600 hover:underline">Council Leads →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Research & Development Cell Council -->
+          <div class="photo-card w-[300px] sm:w-[380px] shrink-0 snap-start bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col group" data-category="summit">
+            <div class="h-52 w-full relative overflow-hidden bg-slate-950 cursor-pointer" onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132418_f2e2064b.png', 'Research & Development Cell Council', 'Innovation, Project Mentorship & Technical Sprints')">
+              <img src="public/images/cov1 (5).png" alt="R&D Cell Assembly" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='/images/forces_robotics_lab_1790867037986.jpg'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-blue-700 text-white text-[10px] font-bold px-2 py-0.5 rounded">R&D Cell</span>
+              <div class="absolute bottom-3 left-3 right-3 text-white"><p class="text-xs sm:text-sm font-bold truncate">R&D Cell Student Council</p></div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+              <p class="text-xs text-slate-600 line-clamp-2">Student coordinators driving technological projects, hackathon initiatives, and research sprints.</p>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132418_f2e2064b.png', 'R&D Cell Student Council', 'Project Mentorship')" class="text-xs font-bold text-[#0b2866] hover:underline">View Photo</button>
+                <button onclick="switchTab('team')" class="text-xs font-bold text-amber-600 hover:underline">Technical Leads →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Student Council Felicitation & Certificate of Honor -->
+          <div class="photo-card w-[300px] sm:w-[380px] shrink-0 snap-start bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col group" data-category="summit">
+            <div class="h-52 w-full relative overflow-hidden bg-slate-950 cursor-pointer" onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132453_91f9f182.png', 'Student Leadership Felicitation & Honors', 'Certificate of Honor Presentation by Faculty Dignitary')">
+              <img src="public/images/cov1 (6).png" alt="Felicitation Ceremony" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='/assets/aistudio/tushar_981a6d68.JPG'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Felicitation</span>
+              <div class="absolute bottom-3 left-3 right-3 text-white"><p class="text-xs sm:text-sm font-bold truncate">Certificate of Honor Ceremony</p></div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+              <p class="text-xs text-slate-600 line-clamp-2">Recognition of dedicated student committee leadership and meritorious technical contributions.</p>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132453_91f9f182.png', 'Student Leadership Felicitation', 'Certificate of Honor Presentation')" class="text-xs font-bold text-[#0b2866] hover:underline">View Photo</button>
+                <button onclick="switchTab('team')" class="text-xs font-bold text-amber-600 hover:underline">Council Leads →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Inaugural Council Gathering -->
+          <div class="photo-card w-[300px] sm:w-[380px] shrink-0 snap-start bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex flex-col group" data-category="summit">
+            <div class="h-52 w-full relative overflow-hidden bg-slate-950 cursor-pointer" onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132442_fc724de6.png', 'P.E.S. FORCES Annual Inaugural Council', 'Executive Assembly & Department Leadership')">
+              <img src="public/images/cover.png" alt="Inaugural Gathering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='/assets/aistudio/allgroup_26b6306b.JPG'">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-[#0b2866] text-white text-[10px] font-bold px-2 py-0.5 rounded">Inauguration</span>
+              <div class="absolute bottom-3 left-3 right-3 text-white"><p class="text-xs sm:text-sm font-bold truncate">Annual Council Assembly</p></div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+              <p class="text-xs text-slate-600 line-clamp-2">Department council leads and student executives gathered for the annual inaugurals.</p>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between">
+                <button onclick="openLightbox('/assets/aistudio/Screenshot_2026-10-20_132442_fc724de6.png', 'Annual Council Assembly', 'Department Leadership')" class="text-xs font-bold text-[#0b2866] hover:underline">View Photo</button>
+                <button onclick="switchTab('team')" class="text-xs font-bold text-amber-600 hover:underline">View Council →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: COMMITTEE TEAM VIEW (Original FORCES Data) -->
+    <div id="tab-team" class="tab-content hidden space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-3xl font-extrabold text-[#0b2866]">Council Leadership & Committee Leads</h2>
+        <p class="text-sm text-slate-600 mt-1">Official student executive council of FORCES.</p>
+      </div>
+      <div id="teamGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- TAB 3: EVENTS VIEW (Original FORCES Data) -->
+    <div id="tab-events" class="tab-content hidden space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-3xl font-extrabold text-[#0b2866]">Flagship Events & Summits</h2>
+        <p class="text-sm text-slate-600 mt-1">Register for upcoming campus hackathons, keynote symposiums, and engineering sprints.</p>
+      </div>
+      <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- TAB 4: QUIZZES VIEW (Original FORCES Data) -->
+    <div id="tab-quizzes" class="tab-content hidden space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-3xl font-extrabold text-[#0b2866]">Technical & Algorithmic Assessments</h2>
+        <p class="text-sm text-slate-600 mt-1">Live timed assessments prepared by the FORCES technical team.</p>
+      </div>
+      <div id="quizzesContainer" class="space-y-6"></div>
+    </div>
+
+    <!-- TAB 5: FEEDBACK & GRIEVANCE SHIELD VIEW (Original FORCES Data) -->
+    <div id="tab-feedback" class="tab-content hidden space-y-8">
+      <div class="max-w-2xl mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-soft space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200 mb-2">
+            <i class="fa-solid fa-shield-halved"></i> 100% Anonymous Whistleblower Shield
+          </span>
+          <h2 class="text-2xl font-extrabold text-[#0b2866]">Student Grievance Redressal Form</h2>
+          <p class="text-xs text-slate-500 mt-1">Submitted directly to the President and Committee Council. No identity, IP, or metadata is recorded.</p>
+        </div>
+
+        <form id="complaintForm" onsubmit="submitComplaint(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Grievance Category</label>
+            <select id="complaintCategory" class="w-full text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-[#0b2866] focus:outline-none">
+              <option value="Event Organization">Event Organization & Fairness</option>
+              <option value="Leadership Grievance">Committee Member Misconduct</option>
+              <option value="Academic & Lab">Lab Facilities & Equipment</option>
+              <option value="General Suggestion">General Campus Suggestion</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Subject</label>
+            <input type="text" id="complaintTitle" required placeholder="Brief summary of your grievance" class="w-full text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-[#0b2866] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detailed Description</label>
+            <textarea id="complaintDesc" rows="4" required placeholder="Describe the grievance with dates, context, and details..." class="w-full text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-[#0b2866] focus:outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 bg-[#0b2866] hover:bg-[#163e91] text-white font-bold rounded-xl text-sm shadow-md transition">
+            <i class="fa-solid fa-paper-plane mr-2"></i> Submit Confidential Grievance
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- TAB 6: ADMIN VIEW (Original FORCES Data) -->
+    <div id="tab-admin" class="tab-content hidden space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-3xl font-extrabold text-[#0b2866]">Administrative Grievance Cell</h2>
+        <p class="text-sm text-slate-600 mt-1">Review confidential student grievances and track resolutions.</p>
+      </div>
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-soft space-y-4">
+        <h3 class="text-lg font-bold text-slate-900">Submitted Grievances (Live Feed)</h3>
+        <div id="adminComplaintsList" class="space-y-3"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 5. PRE-FOOTER FEATURE BANNER & FOOTER (Exact Design & Style from Image)   -->
+  <!-- ========================================================================= -->
+  <footer class="bg-[#071630] text-white border-t border-blue-950 mt-20">
+    
+    <!-- MAIN 4-COLUMN FOOTER SECTION (Exact Layout & Typography) -->
+    <div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-xs">
+          
+          <!-- Column 1: Identity & Description (Circular Emblem + Gold Title) -->
+          <div class="space-y-3.5">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-full border-2 border-amber-400 p-0.5 bg-white overflow-hidden shadow-md shrink-0">
+                <img 
+                  src="public/images/forceslogo.jpeg" 
+                  alt="FORCES Committee" 
+                  class="w-full h-full object-contain rounded-full"
+                >
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-bold text-base leading-tight">FORCES Committee</h4>
+                <p class="text-slate-400 text-xs">College Tech & Leadership Council</p>
+              </div>
+            </div>
+            <p class="text-slate-300 leading-relaxed text-xs">
+              Empowering students with quality technical hackathons, engineering innovation, and leadership since inception.
+            </p>
+          </div>
+
+          <!-- Column 2: Quick Links (Gold Header + Vertical Links) -->
+          <div>
+            <h4 class="text-amber-400 font-bold text-sm mb-4 tracking-wide">Quick Links</h4>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li><a href="#home" onclick="switchTab('home')" class="hover:text-white transition">Home</a></li>
+              <li><a href="#about" onclick="switchTab('team')" class="hover:text-white transition">About</a></li>
+              <li><a href="#events" onclick="switchTab('events')" class="hover:text-white transition">Events</a></li>
+              <li><a href="#gallery" onclick="scrollToPhotos()" class="hover:text-white transition">Gallery</a></li>
+              <li><a href="#feedback" onclick="switchTab('feedback')" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Departments / Tracks (Gold Header + Vertical Links) -->
+          <div>
+            <h4 class="text-amber-400 font-bold text-sm mb-4 tracking-wide">Departments</h4>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li><span onclick="switchTab('events')" class="hover:text-white cursor-pointer transition">Technical & Hackathons</span></li>
+              <li><span onclick="switchTab('events')" class="hover:text-white cursor-pointer transition">Computer Sci. & Engg.</span></li>
+              <li><span onclick="switchTab('events')" class="hover:text-white cursor-pointer transition">Computer Sci. & Engg. (Data Science)</span></li>
+              <li><span onclick="switchTab('events')" class="hover:text-white cursor-pointer transition">Robotics & Hardware Labs</span></li>
+              <li><span onclick="switchTab('events')" class="hover:text-white cursor-pointer transition">Design Systems & Media Outreach</span></li>
+              <li><span onclick="switchTab('quizzes')" class="hover:text-white cursor-pointer transition">Algorithmic Assessments</span></li>
+              <li><span onclick="switchTab('feedback')" class="hover:text-white cursor-pointer transition">Grievance Redressal Cell</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact Info & Follow Us (Gold Icons + Social Row) -->
+          <div class="space-y-4">
+            <div>
+              <h4 class="text-amber-400 font-bold text-sm mb-4 tracking-wide">Contact Info</h4>
+              <div class="space-y-2.5 text-xs text-slate-300">
+                <p class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-location-dot text-amber-400 mt-1 shrink-0"></i>
+                  <span>FORCES Council Wing, Innovation Center, Tech Campus</span>
+                </p>
+                <p class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-envelope text-amber-400 shrink-0"></i>
+                  <span>president@forces.edu</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Follow Us Section from Screenshot -->
+            <div class="pt-2">
+              <h5 class="text-amber-400 font-bold text-xs mb-3">Follow Us</h5>
+              <div class="flex items-center gap-3">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#0e2752] border border-blue-900/60 flex items-center justify-center text-slate-300 hover:text-white hover:border-amber-400 transition" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in text-xs"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#0e2752] border border-blue-900/60 flex items-center justify-center text-slate-300 hover:text-white hover:border-amber-400 transition" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram text-xs"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#0e2752] border border-blue-900/60 flex items-center justify-center text-slate-300 hover:text-white hover:border-amber-400 transition" aria-label="YouTube">
+                  <i class="fa-brands fa-youtube text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- BOTTOM COPYRIGHT STRIP (Exact Layout and Gold Accents from Screenshot) -->
+        <div class="border-t border-blue-950/80 mt-12 pt-6 text-center text-xs space-y-1.5 text-slate-400">
+          <p class="text-amber-400 font-semibold">
+            © 2026 FORCES Committee. All rights reserved.
+          </p>
+          <p class="text-[11px] text-slate-400">
+            Developed by <span class="text-amber-400 font-bold">Tushar Khetre</span>
+          </p>
+          <p class="text-[10px] text-slate-500">
+            For Development Contact: <span class="text-amber-300 font-semibold">Tushar Khetre</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="fixed inset-0" onclick="closeLightbox()"></div>
+    <div class="relative z-10 max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl text-white">
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="max-h-[60vh] w-full bg-black flex items-center justify-center">
+        <img id="lightboxImg" src="" alt="Photo" class="max-h-[60vh] w-full object-contain">
+      </div>
+      <div class="p-6 space-y-2 bg-slate-900">
+        <h3 id="lightboxTitle" class="text-xl font-bold text-amber-300"></h3>
+        <p id="lightboxDesc" class="text-sm text-slate-300"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-50 bg-[#0b2866] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-amber-400 animate-in fade-in">
+    <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+    <span id="toastMsg" class="text-xs font-semibold"></span>
+  </div>
+
+  <!-- Pure JavaScript Entry Point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

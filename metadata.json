@@ -1,0 +1,6 @@
+{
+  "name": "Forces Committee Hub",
+  "description": "Official college committee portal for Forces featuring event registration, interactive quizzes, leadership showcase, anonymous member grievance box, and administrative management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
